@@ -14,7 +14,7 @@ def firstbotmain(msg):
     #         return tradeBonds(msg)
         if msg["symbol"] == "VALBZ":
             return tradeADR(msg)
-        else if msg["symbol"] == "VALE" and globalMarketData[("VALBZ", "buy")] !== None:
+        if msg["symbol"] == "VALE" and globalMarketData[("VALBZ", "buy")] != None:
             return tradeADR(msg)
 
 def tradeBonds(msg):
