@@ -1,7 +1,8 @@
 def tradeBonds(msg):
     global orderID
     orderList = []
-    buyOrder, sellOrder = None
+    buyOrder = None
+    sellOrder = None
     sellList = msg["sell"]
     buyList = msg["buy"]
     minBuy = float("inf")
