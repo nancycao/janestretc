@@ -21,7 +21,7 @@ def secondbotmain(msg):
             #print("VALE")
             #print(globalMarketData[("VALBZ", "buy")])
             return tradeADR(msg)
-        elif msg["symbol"] == "MS" or msg["symbol"] == "GS" or msg["symbol"] == "WFC"
+        elif msg["symbol"] == "MS" or msg["symbol"] == "GS" or msg["symbol"] == "WFC":
             return tradeRegStocks(msg) 
 
 def tradeBonds(msg):
