@@ -79,7 +79,7 @@ def getFairValue(symbol):
 
     if offers and bids: 
 
-        highestOffer = max(offers, key=getPrice, default)
+        highestOffer = max(offers, key=getPrice)
         lowestBid = min(bids, key=getPrice)
 
         return (highestOffer[0] + lowestBid[0])/2
