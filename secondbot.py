@@ -100,7 +100,9 @@ def tradeXLF(msg):
     sellList = msg["sell"]
     buyList = msg["buy"]
     if fairValue:
+        print("fairValue Price: ", fairValue)
         for sellPrice, sellSize in sellList:
+            print("Sell Price: ", sellPrice)
             #print(sellPrice)
             #print(sellList)
             if sellPrice < fairValue:
@@ -110,6 +112,7 @@ def tradeXLF(msg):
                 orderID += 1
                 orderList.append(order)
         for buyPrice, buySize in buyList:
+            print("Buy Price: ", buyPrice)
             if buyPrice > fairValue:
                 # buy under 1000
                 print("XLF")
