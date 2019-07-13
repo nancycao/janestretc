@@ -41,6 +41,7 @@ def tradeBonds(msg):
     return order
 
 def tradeADR(msg):
+    global orderID
     fairValue = getFairValue("VALBZ")
     order = None
     sellList = msg["sell"]
