@@ -3,6 +3,7 @@ import tradebonds
 orderID = 1
 
 globalMarketData = {}
+seenVALBZ = False
 globalMarketData[("VALBZ", "buy")] = None
 
 def firstbotmain(msg):
@@ -14,8 +15,9 @@ def firstbotmain(msg):
     #     if msg["symbol"] == "BOND":
     #         return tradeBonds(msg)
         if msg["symbol"] == "VALBZ":
+            seenVALBZ = True
             return tradeADR(msg)
-        elif msg["symbol"] == "VALE" and globalMarketData[("VALBZ", "buy")] != None:
+        elif msg["symbol"] == "VALE" and seenVALBZ:
             print("VALE")
             print(globalMarketData[("VALBZ", "buy")])
             return tradeADR(msg)
