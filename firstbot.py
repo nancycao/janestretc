@@ -1,6 +1,6 @@
 orderID = 1
 
-globalMarketData = []
+globalMarketData = {}
 
 def firstbotmain(msg):
     #if msg["type"] == "book":
