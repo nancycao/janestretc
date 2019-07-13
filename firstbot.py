@@ -1,6 +1,6 @@
 orderID = 1
 
-globalMarketData = []
+#globalMarketData = []
 
 def firstbotmain(msg):
     #if msg["type"] == "book":
@@ -32,6 +32,7 @@ def tradeBonds(msg):
         print(order)
     return order
 
+'''
 def addGlobalStateData(msg):
     if msg["type"] == "book":
         globalMarket[(msg["symbol"], "buy")] = msg["buy"]
@@ -48,3 +49,4 @@ def getFairValue(symbol):
 
 def getPrice(item):
     return item[0]
+'''
