@@ -1,6 +1,7 @@
 orderID = 1
 
 globalMarketData = {}
+globalMarketData[("VALBZ", "buy")] = None
 
 def firstbotmain(msg):
     #if msg["type"] == "book":
@@ -11,7 +12,9 @@ def firstbotmain(msg):
     if msg["type"] == "book":
     #     if msg["symbol"] == "BOND":
     #         return tradeBonds(msg)
-        if msg["symbol"] == "VALBZ" or msg["symbol"] == "VALE":
+        if msg["symbol"] == "VALBZ"
+            return tradeADR(msg)
+        else if msg["symbol"] == "VALE" and globalMarketData[("VALBZ", "buy")] !== None:
             return tradeADR(msg)
 
 def tradeBonds(msg):
