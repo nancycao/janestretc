@@ -8,11 +8,10 @@ def firstbotmain(msg):
     #if msg["type"] == "book":
     #    print(msg)
     # selling bonds first
-    # addGlobalStateData(msg)
     if msg["type"] == "book":
         if msg["symbol"] == "BOND":
-            return tradebonds.tradeBonds(msg)
-        #else if msg["symbol"] == "VALBZ" or msg["symbol"] == "VALE"
+             return tradebonds.tradeBonds(msg)
+        #if msg["symbol"] == "VALBZ" or msg["symbol"] == "VALE":
         #    return tradeADR(msg)
 
 def tradeADR(msg):
