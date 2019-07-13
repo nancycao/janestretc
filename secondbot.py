@@ -95,7 +95,9 @@ def tradeRegStocks(msg):
 def tradeXLF(msg):
     global orderID
     symbol = msg["symbol"]
-    fairValue = getFairValue("XLF")*0.9
+    fairValue = getFairValue("XLF")
+    if fairValue:
+        fairValur *= 0.95
     orderList = []
     sellList = msg["sell"]
     buyList = msg["buy"]
