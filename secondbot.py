@@ -5,7 +5,7 @@ orderID = 1
 globalMarketData = {}
 seenVALBZ = False
 
-def firstbotmain(msg):
+def secondbotmain(msg):
     #if msg["type"] == "book":
     #    print(msg)
     # selling bonds first
