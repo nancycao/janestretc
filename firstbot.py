@@ -7,8 +7,9 @@ def firstbotmain(msg):
     #    print(msg)
     # selling bonds first
     addGlobalStateData(msg)
-    if msg["type"] == "book" and msg["symbol"] == "BOND":
-        return tradeBonds(msg)
+    if msg["type"] == "book":
+        if msg["symbol"] == "BOND":
+            return tradeBonds(msg)
 
 def tradeBonds(msg):
     global orderID
@@ -20,12 +21,12 @@ def tradeBonds(msg):
         #print(sellList)
         if sellPrice < 1000:
             # buy under 1000
-            order = {"type": "add", "order_id": orderID, "symbol": "BOND", "dir": "BUY", "price": sellPrice, "size": sellSize}
+            order = {"type": "add", "order_id": orderID, "symbol": "BOND", "dir": "BUY", "price": sellPrice-1, "size": sellSize}
             orderID += 1
     for buyPrice, buySize in buyList:
         if buyPrice > 1000:
             # buy under 1000
-            order = {"type": "add", "order_id": orderID, "symbol": "BOND", "dir": "SELL", "price": buyPrice, "size": buySize}
+            order = {"type": "add", "order_id": orderID, "symbol": "BOND", "dir": "SELL", "price": buyPrice+1, "size": buySize}
             orderID += 1
     if order:
         print(order)
