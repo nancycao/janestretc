@@ -21,5 +21,5 @@ def firstbotmain(msg):
                 # buy under 1000
                 order = {"type": "add", "order_id": orderID, "symbol": "BOND", "dir": "SELL", "price": buyPrice, "size": buySize}
                 orderID += 1
-        #print(order)
+        print(order)
         return order
