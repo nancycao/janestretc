@@ -49,7 +49,6 @@ def tradeADR(msg):
     orderList = []
     sellList = msg["sell"]
     buyList = msg["buy"]
-    print(globalMarketData)
     if fairValue:
         for sellPrice, sellSize in sellList:
             #print(sellPrice)
@@ -70,6 +69,7 @@ def tradeADR(msg):
 def tradeRegStocks(msg):
     global orderID
     fairValue = getFairValue(msg["symbol"])
+    print(globalMarketData)
     orderList = []
     sellList = msg["sell"]
     buyList = msg["buy"]
