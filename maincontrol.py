@@ -10,6 +10,7 @@ from __future__ import print_function
 import sys
 import socket
 import json
+import firstbot
 
 # ~~~~~============== CONFIGURATION  ==============~~~~~
 # replace REPLACEME with your team name!
@@ -41,31 +42,6 @@ def write_to_exchange(exchange, obj):
 def read_from_exchange(exchange):
     return json.loads(exchange.readline())
 
-orderID = 1
-
-def firstbot(msg):
-    global orderID
-    #if msg["type"] == "book":
-    #    print(msg)
-    # selling bonds first
-    order = None
-    if msg["type"] == "book" and msg["symbol"] == "BOND":
-        sellList = msg["sell"]
-        buyList = msg["buy"]
-        for sellPrice, sellSize in sellList:
-            #print(sellPrice)
-            #print(sellList)
-            if sellPrice < 1000:
-                # buy under 1000
-                order = {"type": "add", "order_id": orderID, "symbol": "BOND", "dir": "BUY", "price": sellPrice, "size": sellSize}
-                orderID += 1
-        for buyPrice, buySize in buyList:
-            if buyPrice >= 1000:
-                # buy under 1000
-                order = {"type": "add", "order_id": orderID, "symbol": "BOND", "dir": "SELL", "price": buyPrice, "size": buySize}
-                orderID += 1
-        #print(order)
-        return order
 # ~~~~~============== MAIN LOOP ==============~~~~~
 
 def main():
@@ -77,7 +53,7 @@ def main():
     # Since many write messages generate marketdata, this will cause an
     # exponential explosion in pending messages. Please, don't do that!
     while True:
-        order = firstbot(read_from_exchange(exchange))
+        order = firstbot.firstbotmain(read_from_exchange(exchange))
         if order:
             write_to_exchange(exchange, order)
     print("The exchange replied:", hello_from_exchange, file=sys.stderr)
