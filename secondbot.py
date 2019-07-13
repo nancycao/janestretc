@@ -10,13 +10,14 @@ def firstbotmain(msg):
     #    print(msg)
     # selling bonds first
     addGlobalStateData(msg)
-    print(globalMarketData)
     if msg["type"] == "book":
     #     if msg["symbol"] == "BOND":
     #         return tradeBonds(msg)
         if msg["symbol"] == "VALBZ":
             return tradeADR(msg)
         elif msg["symbol"] == "VALE" and globalMarketData[("VALBZ", "buy")] != None:
+            print("VALE")
+            print(globalMarketData[("VALBZ", "buy")])
             return tradeADR(msg)
 
 def tradeBonds(msg):
