@@ -21,8 +21,8 @@ def tradeBonds(msg):
                 maxSell = maxPrice
                 sellOrder = {"type": "add", "order_id": orderID, "symbol": "BOND", "dir": "SELL", "price": buyPrice+1, "size": buySize}
                 orderID += 1
-    if buyOrder:
+    if buyOrder != None:
         orderList.append(buyOrder)
-    if sellOrder:
+    if sellOrder != None:
         orderList.append(sellOrder)
     return orderList

@@ -3,7 +3,6 @@ import tradebonds
 orderID = 1
 
 globalMarketData = {}
-globalMarketData[("VALBZ", "buy")] = None
 
 def firstbotmain(msg):
     #if msg["type"] == "book":
