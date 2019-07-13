@@ -44,6 +44,7 @@ def read_from_exchange(exchange):
 orderID = 1
 
 def firstbot(msg):
+    print(msg)
     # selling bonds first
     if msg["type"] == "BOOK" and msg["symbol"] == "BOND":
         sellList = msg["sell"]
@@ -72,8 +73,7 @@ def main():
     # Since many write messages generate marketdata, this will cause an
     # exponential explosion in pending messages. Please, don't do that!
     while True:
-        msg = read_from_exchange(exchange)
-        firstbot(msg)
+        firstbot(read_from_exchange(exchange))
     print("The exchange replied:", hello_from_exchange, file=sys.stderr)
 
 if __name__ == "__main__":
