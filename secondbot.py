@@ -61,8 +61,6 @@ def tradeADR(msg):
                 # buy under 1000
                 order = {"type": "add", "order_id": orderID, "symbol": msg["symbol"], "dir": "SELL", "price": buyPrice+1, "size": buySize}
                 orderID += 1
-        if order:
-            print(order)
         return [order]
     return [order]
 
