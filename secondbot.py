@@ -12,8 +12,8 @@ def firstbotmain(msg):
     global seenVALBZ
     addGlobalStateData(msg)
     if msg["type"] == "book":
-    #     if msg["symbol"] == "BOND":
-    #         return tradeBonds(msg)
+        if msg["symbol"] == "BOND":
+             return tradebonds.tradeBonds(msg)
         if msg["symbol"] == "VALBZ":
             seenVALBZ = True
             return tradeADR(msg)
@@ -50,7 +50,7 @@ def tradeADR(msg):
     sellList = msg["sell"]
     buyList = msg["buy"]
     if fairValue:
-        
+
         for sellPrice, sellSize in sellList:
             #print(sellPrice)
             #print(sellList)
@@ -77,7 +77,7 @@ def getFairValue(symbol):
     offers = globalMarketData[(symbol, "buy")]
     bids = globalMarketData[(symbol, "sell")]
 
-    if offers and bids: 
+    if offers and bids:
 
         highestOffer = max(offers, key=getPrice)
         lowestBid = min(bids, key=getPrice)
