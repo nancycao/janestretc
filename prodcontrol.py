@@ -55,9 +55,11 @@ def main():
     # Since many write messages generate marketdata, this will cause an
     # exponential explosion in pending messages. Please, don't do that!
     while True:
-        order = firstbot.firstbotmain(read_from_exchange(exchange))
-        if order:
-            write_to_exchange(exchange, order)
+        orderList = firstbot.firstbotmain(read_from_exchange(exchange))
+        if orderList:
+            for order in orderList:
+                write_to_exchange(exchange, order)
+                print(order)
     print("The exchange replied:", hello_from_exchange, file=sys.stderr)
 
 if __name__ == "__main__":
