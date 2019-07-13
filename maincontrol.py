@@ -54,7 +54,7 @@ def main():
     # A common mistake people make is to call write_to_exchange() > 1
     # time for every read_from_exchange() response.
     # Since many write messages generate marketdata, this will cause an
-    # exponential explosion in pending messages. Please, don't do that!
+    # exponential explosion in pending messages. Please, don't do that
     while True:
         orderList = secondbot.secondbotmain(read_from_exchange(exchange))
         if orderList:
