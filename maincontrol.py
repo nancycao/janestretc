@@ -60,11 +60,11 @@ def main():
     print("The exchange replied:", hello_from_exchange, file=sys.stderr)
 
 if __name__ == "__main__":
-    global test
+    global test_mode
     parser = argparse.ArgumentParser(description='Trading bot that communicates to JaneStreet server')
     parser.add_argument("--prod", action='store_true')
     args = parser.parse_args()
     if args.prod == True:
         test_mode = False
-    print(test_mode)
+    print("test mode: ", test_mode)
     main()
