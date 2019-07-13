@@ -1,3 +1,5 @@
+import tradebonds
+
 orderID = 1
 
 globalMarketData = {}
@@ -7,9 +9,8 @@ def firstbotmain(msg):
     #if msg["type"] == "book":
     #    print(msg)
     # selling bonds first
-    addGlobalStateData(msg)
-    print(globalMarketData)
     if msg["type"] == "book":
+<<<<<<< HEAD
     #     if msg["symbol"] == "BOND":
     #         return tradeBonds(msg)
         if msg["symbol"] == "VALBZ"
@@ -37,6 +38,12 @@ def tradeBonds(msg):
     if order:
         print(order)
     return order
+=======
+        if msg["symbol"] == "BOND":
+             return tradebonds.tradeBonds(msg)
+        #if msg["symbol"] == "VALBZ" or msg["symbol"] == "VALE":
+        #    return tradeADR(msg)
+>>>>>>> 2e548ab459438c1811209815f86808782553d83a
 
 def tradeADR(msg):
     fairValue = getFairValue("VALBZ")
