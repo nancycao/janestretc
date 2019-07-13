@@ -49,20 +49,23 @@ def tradeADR(msg):
     order = None
     sellList = msg["sell"]
     buyList = msg["buy"]
-    for sellPrice, sellSize in sellList:
-        #print(sellPrice)
-        #print(sellList)
-        if sellPrice < fairValue:
-            # buy under 1000
-            order = {"type": "add", "order_id": orderID, "symbol": msg["symbol"], "dir": "BUY", "price": sellPrice-1, "size": sellSize}
-            orderID += 1
-    for buyPrice, buySize in buyList:
-        if buyPrice > fairValue:
-            # buy under 1000
-            order = {"type": "add", "order_id": orderID, "symbol": msg["symbol"], "dir": "SELL", "price": buyPrice+1, "size": buySize}
-            orderID += 1
-    if order:
-        print(order)
+    if fairValue:
+        
+        for sellPrice, sellSize in sellList:
+            #print(sellPrice)
+            #print(sellList)
+            if sellPrice < fairValue:
+                # buy under 1000
+                order = {"type": "add", "order_id": orderID, "symbol": msg["symbol"], "dir": "BUY", "price": sellPrice-1, "size": sellSize}
+                orderID += 1
+        for buyPrice, buySize in buyList:
+            if buyPrice > fairValue:
+                # buy under 1000
+                order = {"type": "add", "order_id": orderID, "symbol": msg["symbol"], "dir": "SELL", "price": buyPrice+1, "size": buySize}
+                orderID += 1
+        if order:
+            print(order)
+        return order
     return order
 
 def addGlobalStateData(msg):
@@ -74,10 +77,14 @@ def getFairValue(symbol):
     offers = globalMarketData[(symbol, "buy")]
     bids = globalMarketData[(symbol, "sell")]
 
-    highestOffer = max(offers, key=getPrice)
-    lowestBid = min(bids, key=getPrice)
+    if offers and bids: 
 
-    return (highestOffer[0] + lowestBid[0])/2
+        highestOffer = max(offers, key=getPrice, default)
+        lowestBid = min(bids, key=getPrice)
+
+        return (highestOffer[0] + lowestBid[0])/2
+
+    return None
 
 def getPrice(item):
     return item[0]
