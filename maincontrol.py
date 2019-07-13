@@ -60,6 +60,7 @@ def main():
         if orderList:
             for order in orderList:
                 write_to_exchange(exchange, order)
+                print(order)
     print("The exchange replied:", hello_from_exchange, file=sys.stderr)
 
 if __name__ == "__main__":
