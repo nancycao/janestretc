@@ -1,12 +1,12 @@
 orderID = 1
 
-#globalMarketData = []
+globalMarketData = []
 
 def firstbotmain(msg):
     #if msg["type"] == "book":
     #    print(msg)
     # selling bonds first
-    # addGlobalStateData(msg)
+    addGlobalStateData(msg)
     if msg["type"] == "book":
         if msg["symbol"] == "BOND":
             return tradeBonds(msg)
@@ -31,3 +31,20 @@ def tradeBonds(msg):
     if order:
         print(order)
     return order
+
+def addGlobalStateData(msg):
+    if msg["type"] == "book":
+        globalMarketData[(msg["symbol"], "buy")] = msg["buy"]
+        globalMarketData[(msg["symbol"], "sell")] = msg["sell"]
+
+def getFairValue(symbol):
+    offers = globalMarketData[(symbol, "buy")]
+    bids = globalMarketData[(symbol, "sell")]
+
+    highestOffer = max(offers, key=getPrice)
+    lowestBid = min(bids, key=getPrice)
+
+    return (highestOffer + lowestBid)/2
+
+def getPrice(item):
+    return item[0]
