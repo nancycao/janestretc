@@ -17,11 +17,11 @@ def secondbotmain(msg):
         if msg["symbol"] == "VALBZ":
             seenVALBZ = True
             return tradeADR(msg)
-        elif msg["symbol"] == "VALE" and seenVALBZ:
+        if msg["symbol"] == "VALE" and seenVALBZ:
             #print("VALE")
             #print(globalMarketData[("VALBZ", "buy")])
             return tradeADR(msg)
-        elif msg["symbol"] == "MS" or msg["symbol"] == "GS" or msg["symbol"] == "WFC":
+        if msg["symbol"] == "MS" or msg["symbol"] == "GS" or msg["symbol"] == "WFC":
             return tradeRegStocks(msg)
 
 def tradeBonds(msg):
@@ -69,10 +69,10 @@ def tradeADR(msg):
 def tradeRegStocks(msg):
     global orderID
     fairValue = getFairValue(msg["symbol"])
-    print(globalMarketData)
     orderList = []
     sellList = msg["sell"]
     buyList = msg["buy"]
+    print(fairValue)
     if fairValue:
         for sellPrice, sellSize in sellList:
             #print(sellPrice)
