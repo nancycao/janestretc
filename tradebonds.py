@@ -4,7 +4,7 @@ def tradeBonds(msg):
     sellList = msg["sell"]
     buyList = msg["buy"]
     minBuy = float("inf")
-    maxSell = float(""-inf")
+    maxSell = float("-inf")
     for sellPrice, sellSize in sellList:
         #print(sellPrice)
         #print(sellList)
