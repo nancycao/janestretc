@@ -1,7 +1,6 @@
 orderID = 1
 
 def firstbotmain(msg):
-    global orderID
     #if msg["type"] == "book":
     #    print(msg)
     # selling bonds first
@@ -9,6 +8,7 @@ def firstbotmain(msg):
         return tradeBonds(msg)
 
 def tradeBonds(msg):
+    global orderID
     order = None
     sellList = msg["sell"]
     buyList = msg["buy"]
