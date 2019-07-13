@@ -23,7 +23,7 @@ def secondbotmain(msg):
             return tradeADR(msg)
         if msg["symbol"] == "MS" or msg["symbol"] == "GS" or msg["symbol"] == "WFC":
             return tradeRegStocks(msg)
-        if msg["sybmol"] == "XLF":
+        if msg["symbol"] == "XLF":
             return tradeXLF(msg)
 
 def tradeBonds(msg):
