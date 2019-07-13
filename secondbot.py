@@ -72,7 +72,7 @@ def getFairValue(symbol):
     highestOffer = max(offers, key=getPrice)
     lowestBid = min(bids, key=getPrice)
 
-    return (highestOffer + lowestBid)/2
+    return (highestOffer[0] + lowestBid[0])/2
 
 def getPrice(item):
     return item[0]
