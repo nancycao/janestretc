@@ -5,11 +5,11 @@ def firstbotmain(msg):
     #if msg["type"] == "book":
     #    print(msg)
     # selling bonds first
-    order = None
     if msg["type"] == "book" and msg["symbol"] == "BOND":
-        tradeBonds(msg)
+        return tradeBonds(msg)
 
 def tradeBonds(msg):
+    order = None
     sellList = msg["sell"]
     buyList = msg["buy"]
     for sellPrice, sellSize in sellList:
