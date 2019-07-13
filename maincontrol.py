@@ -44,13 +44,15 @@ def read_from_exchange(exchange):
 orderID = 1
 
 def firstbot(msg):
-    if msg["type"] == "book":
-        print(msg)
+    #if msg["type"] == "book":
+    #    print(msg)
     # selling bonds first
     if msg["type"] == "book" and msg["symbol"] == "BOND":
         sellList = msg["sell"]
         buyList = msg["buy"]
         for sellPrice, sellSize in sellList:
+            print(sellPrice)
+            print(selList)
             if sellPrice < 1000:
                 # buy under 1000
                 order = {"type": "add", "order_id": orderID, "symbol": "BOND", "dir": "BUY", "price": sellPrice, "size": sellSize}
