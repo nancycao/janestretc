@@ -46,7 +46,7 @@ def tradeBonds(msg):
 def tradeADR(msg):
     global orderID
     fairValue = getFairValue("VALBZ")
-    order = None
+    order = []
     sellList = msg["sell"]
     buyList = msg["buy"]
     if fairValue:
@@ -65,8 +65,8 @@ def tradeADR(msg):
                 orderID += 1
         if order:
             print(order)
-        return order
-    return order
+        return [order]
+    return [order]
 
 def addGlobalStateData(msg):
     if msg["type"] == "book":
