@@ -20,7 +20,7 @@ def tradeBonds(msg):
         if buyPrice > 1000:
             # buy under 1000
             if buyPrice > maxSell:
-                maxSell = maxPrice
+                maxSell = buyPrice
                 sellOrder = {"type": "add", "order_id": orderID, "symbol": "BOND", "dir": "SELL", "price": buyPrice+1, "size": buySize}
                 orderID += 1
     if buyOrder != None:
