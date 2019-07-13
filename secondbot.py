@@ -73,7 +73,7 @@ def tradeRegStocks(msg):
     symbol = msg["symbol"]
     fairValue = getFairValue(msg["symbol"])
     if fairValue:
-        fairValue *= 0.999
+        fairValue *= 0.9999
     orderList = []
     sellList = msg["sell"]
     buyList = msg["buy"]
