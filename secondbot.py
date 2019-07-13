@@ -18,8 +18,8 @@ def firstbotmain(msg):
             seenVALBZ = True
             return tradeADR(msg)
         elif msg["symbol"] == "VALE" and seenVALBZ:
-            print("VALE")
-            print(globalMarketData[("VALBZ", "buy")])
+            #print("VALE")
+            #print(globalMarketData[("VALBZ", "buy")])
             return tradeADR(msg)
 
 def tradeBonds(msg):
@@ -40,7 +40,7 @@ def tradeBonds(msg):
             order = {"type": "add", "order_id": orderID, "symbol": "BOND", "dir": "SELL", "price": buyPrice+1, "size": buySize}
             orderID += 1
     if order:
-        print(order)
+        #print(order)
     return order
 
 def tradeADR(msg):
