@@ -10,7 +10,7 @@ def firstbotmain(msg):
     if msg["type"] == "book":
     #     if msg["symbol"] == "BOND":
     #         return tradeBonds(msg)
-        if msg["symbol"] == "VALBZ" or msg["symbol"] == "VALE"
+        if msg["symbol"] == "VALBZ" or msg["symbol"] == "VALE":
             return tradeADR(msg)
 
 def tradeBonds(msg):
