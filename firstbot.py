@@ -17,7 +17,7 @@ def firstbotmain(msg):
                 order = {"type": "add", "order_id": orderID, "symbol": "BOND", "dir": "BUY", "price": sellPrice, "size": sellSize}
                 orderID += 1
         for buyPrice, buySize in buyList:
-            if buyPrice >= 1000:
+            if buyPrice > 1000:
                 # buy under 1000
                 order = {"type": "add", "order_id": orderID, "symbol": "BOND", "dir": "SELL", "price": buyPrice, "size": buySize}
                 orderID += 1
