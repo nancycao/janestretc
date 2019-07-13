@@ -68,24 +68,25 @@ def tradeADR(msg):
 
 def tradeRegStocks(msg):
     global orderID
+    symbol = msg["symbol"]
     fairValue = getFairValue(msg["symbol"])
     orderList = []
     sellList = msg["sell"]
     buyList = msg["buy"]
-    print(fairValue)
     if fairValue:
         for sellPrice, sellSize in sellList:
+            print(sellList)
             #print(sellPrice)
             #print(sellList)
             if sellPrice < fairValue:
                 # buy under 1000
-                order = {"type": "add", "order_id": orderID, "symbol": msg["symbol"], "dir": "BUY", "price": sellPrice-1, "size": sellSize}
+                order = {"type": "add", "order_id": orderID, "symbol": symbol, "dir": "BUY", "price": sellPrice, "size": sellSize}
                 orderID += 1
                 orderList.append(order)
         for buyPrice, buySize in buyList:
             if buyPrice > fairValue:
                 # buy under 1000
-                order = {"type": "add", "order_id": orderID, "symbol": msg["symbol"], "dir": "SELL", "price": buyPrice+1, "size": buySize}
+                order = {"type": "add", "order_id": orderID, "symbol": symbol, "dir": "SELL", "price": buyPrice, "size": buySize}
                 orderID += 1
                 orderList.append(order)
     return orderList
