@@ -105,12 +105,14 @@ def tradeXLF(msg):
             #print(sellList)
             if sellPrice < fairValue:
                 # buy under 1000
+                print("XLF")
                 order = {"type": "add", "order_id": orderID, "symbol": XLF, "dir": "BUY", "price": sellPrice, "size": sellSize}
                 orderID += 1
                 orderList.append(order)
         for buyPrice, buySize in buyList:
             if buyPrice > fairValue:
                 # buy under 1000
+                print("XLF")
                 order = {"type": "add", "order_id": orderID, "symbol": XLF, "dir": "SELL", "price": buyPrice, "size": buySize}
                 orderID += 1
                 orderList.append(order)
