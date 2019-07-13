@@ -42,6 +42,7 @@ def tradeBonds(msg):
 
 def tradeADR(msg):
     fairValue = getFairValue("VALBZ")
+    order = None
     sellList = msg["sell"]
     buyList = msg["buy"]
     for sellPrice, sellSize in sellList:
