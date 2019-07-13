@@ -1,5 +1,6 @@
 def tradeBonds(msg):
     global orderID
+    orderList = []
     buyOrder, sellOrder = None
     sellList = msg["sell"]
     buyList = msg["buy"]
