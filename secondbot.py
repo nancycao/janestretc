@@ -75,7 +75,6 @@ def tradeRegStocks(msg):
     buyList = msg["buy"]
     if fairValue:
         for sellPrice, sellSize in sellList:
-            print(sellList)
             #print(sellPrice)
             #print(sellList)
             if sellPrice < fairValue:
