@@ -18,6 +18,7 @@ import argparse
 team_name="TEAMNAS"
 # This variable dictates whether or not the bot is connecting to the prod
 # or test exchange. Be careful with this switch!
+global test_mode
 test_mode = True
 
 # This setting changes which test exchange is connected to.
