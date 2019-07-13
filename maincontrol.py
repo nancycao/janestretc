@@ -10,10 +10,11 @@ from __future__ import print_function
 import sys
 import socket
 import json
+import firstbot
 
 # ~~~~~============== CONFIGURATION  ==============~~~~~
 # replace REPLACEME with your team name!
-team_name="Team NAS"
+team_name="TEAMNAS"
 # This variable dictates whether or not the bot is connecting to the prod
 # or test exchange. Be careful with this switch!
 test_mode = True
