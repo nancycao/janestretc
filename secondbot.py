@@ -95,7 +95,7 @@ def tradeRegStocks(msg):
 def tradeXLF(msg):
     global orderID
     symbol = msg["symbol"]
-    fairValue = getFairValue("XLF")*0.8
+    fairValue = getFairValue("XLF")*0.9
     orderList = []
     sellList = msg["sell"]
     buyList = msg["buy"]
@@ -106,14 +106,14 @@ def tradeXLF(msg):
             if sellPrice < fairValue:
                 # buy under 1000
                 print("XLF")
-                order = {"type": "add", "order_id": orderID, "symbol": XLF, "dir": "BUY", "price": sellPrice, "size": sellSize}
+                order = {"type": "add", "order_id": orderID, "symbol": "XLF", "dir": "BUY", "price": sellPrice, "size": sellSize}
                 orderID += 1
                 orderList.append(order)
         for buyPrice, buySize in buyList:
             if buyPrice > fairValue:
                 # buy under 1000
                 print("XLF")
-                order = {"type": "add", "order_id": orderID, "symbol": XLF, "dir": "SELL", "price": buyPrice, "size": buySize}
+                order = {"type": "add", "order_id": orderID, "symbol": "XLF", "dir": "SELL", "price": buyPrice, "size": buySize}
                 orderID += 1
                 orderList.append(order)
     return orderList
