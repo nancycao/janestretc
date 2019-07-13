@@ -6,7 +6,7 @@ def firstbotmain(msg):
     #if msg["type"] == "book":
     #    print(msg)
     # selling bonds first
-    addGlobalStateData(msg)
+    # addGlobalStateData(msg)
     if msg["type"] == "book":
         if msg["symbol"] == "BOND":
             return tradeBonds(msg)
