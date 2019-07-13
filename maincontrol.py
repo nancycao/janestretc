@@ -44,7 +44,7 @@ def read_from_exchange(exchange):
 orderID = 1
 
 def firstbot(msg):
-    print(msg)
+    # print(msg)
     # selling bonds first
     if msg["type"] == "BOOK" and msg["symbol"] == "BOND":
         sellList = msg["sell"]
@@ -55,12 +55,14 @@ def firstbot(msg):
                 order = {"type": "add", "order_id": orderID, "symbol": "BOND", "dir": "BUY", "price": sellPrice, "size": sellSize}
                 orderID += 1
                 write_to_exchange(exchange, order)
+                print(order)
         for buyPrice, buySize in buyList:
             if buyPrice > 1000:
                 # buy under 1000
                 order = {"type": "add", "order_id": orderID, "symbol": "BOND", "dir": "SELL", "price": buyPrice, "size": buySize}
                 orderID += 1
                 write_to_exchange(exchange, order)
+                print(order)
 
 # ~~~~~============== MAIN LOOP ==============~~~~~
 
