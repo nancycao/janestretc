@@ -72,8 +72,6 @@ def tradeRegStocks(msg):
     global orderID
     symbol = msg["symbol"]
     fairValue = getFairValue(msg["symbol"])
-    if fairValue:
-        fairValue *= 0.9999
     orderList = []
     sellList = msg["sell"]
     buyList = msg["buy"]
