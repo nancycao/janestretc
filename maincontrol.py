@@ -46,7 +46,7 @@ orderID = 1
 def firstbot(msg):
     # print(msg)
     # selling bonds first
-    if msg["type"] == "BOOK" and msg["symbol"] == "BOND":
+    if msg["type"] == "book" and msg["symbol"] == "BOND":
         sellList = msg["sell"]
         buyList = msg["buy"]
         for sellPrice, sellSize in sellList:
