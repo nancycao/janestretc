@@ -53,7 +53,7 @@ def firstbot(msg):
         for sellPrice, sellSize in sellList:
             print(sellPrice)
             print(sellList)
-            if sellPrice < 1000:
+            if sellPrice <= 1000:
                 # buy under 1000
                 order = {"type": "add", "order_id": orderID, "symbol": "BOND", "dir": "BUY", "price": sellPrice, "size": sellSize}
                 orderID += 1
