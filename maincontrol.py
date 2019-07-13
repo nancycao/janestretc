@@ -44,7 +44,8 @@ def read_from_exchange(exchange):
 orderID = 1
 
 def firstbot(msg):
-    # print(msg)
+    if msg["type"] == "book"
+        print(msg)
     # selling bonds first
     if msg["type"] == "book" and msg["symbol"] == "BOND":
         sellList = msg["sell"]
