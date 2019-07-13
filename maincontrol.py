@@ -52,7 +52,7 @@ def firstbot(msg):
         buyList = msg["buy"]
         for sellPrice, sellSize in sellList:
             print(sellPrice)
-            print(selList)
+            print(sellList)
             if sellPrice < 1000:
                 # buy under 1000
                 order = {"type": "add", "order_id": orderID, "symbol": "BOND", "dir": "BUY", "price": sellPrice, "size": sellSize}
