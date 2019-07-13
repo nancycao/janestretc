@@ -23,6 +23,8 @@ def secondbotmain(msg):
             return tradeADR(msg)
         if msg["symbol"] == "MS" or msg["symbol"] == "GS" or msg["symbol"] == "WFC":
             return tradeRegStocks(msg)
+        if msg["sybmol"] == "XLF":
+            return tradeXLF(msg)
 
 def tradeBonds(msg):
     global orderID
@@ -90,6 +92,29 @@ def tradeRegStocks(msg):
                 orderList.append(order)
     return orderList
 
+def tradeXLF(msg):
+    global orderID
+    symbol = msg["symbol"]
+    fairValue = getFairValue("XLF")
+    orderList = []
+    sellList = msg["sell"]
+    buyList = msg["buy"]
+    if fairValue:
+        for sellPrice, sellSize in sellList:
+            #print(sellPrice)
+            #print(sellList)
+            if sellPrice < fairValue:
+                # buy under 1000
+                order = {"type": "add", "order_id": orderID, "symbol": XLF, "dir": "BUY", "price": sellPrice, "size": sellSize}
+                orderID += 1
+                orderList.append(order)
+        for buyPrice, buySize in buyList:
+            if buyPrice > fairValue:
+                # buy under 1000
+                order = {"type": "add", "order_id": orderID, "symbol": XLF, "dir": "SELL", "price": buyPrice, "size": buySize}
+                orderID += 1
+                orderList.append(order)
+    return orderList
 
 def addGlobalStateData(msg):
     if msg["type"] == "book":
