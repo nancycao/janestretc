@@ -97,7 +97,7 @@ def tradeXLF(msg):
     symbol = msg["symbol"]
     fairValue = getFairValue("XLF")
     if fairValue:
-        fairValue *= 0.99
+        fairValue *= 0.999
     orderList = []
     sellList = msg["sell"]
     buyList = msg["buy"]
