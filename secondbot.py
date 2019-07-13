@@ -4,12 +4,12 @@ orderID = 1
 
 globalMarketData = {}
 seenVALBZ = False
-globalMarketData[("VALBZ", "buy")] = None
 
 def firstbotmain(msg):
     #if msg["type"] == "book":
     #    print(msg)
     # selling bonds first
+    global seenVALBZ
     addGlobalStateData(msg)
     if msg["type"] == "book":
     #     if msg["symbol"] == "BOND":
