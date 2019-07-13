@@ -1,3 +1,5 @@
+orderID = 1
+
 def tradeBonds(msg):
     global orderID
     orderList = []
