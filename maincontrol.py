@@ -48,12 +48,13 @@ def firstbot(msg):
     #if msg["type"] == "book":
     #    print(msg)
     # selling bonds first
+    order = None
     if msg["type"] == "book" and msg["symbol"] == "BOND":
         sellList = msg["sell"]
         buyList = msg["buy"]
         for sellPrice, sellSize in sellList:
-            print(sellPrice)
-            print(sellList)
+            #print(sellPrice)
+            #print(sellList)
             if sellPrice <= 1000:
                 # buy under 1000
                 order = {"type": "add", "order_id": orderID, "symbol": "BOND", "dir": "BUY", "price": sellPrice, "size": sellSize}
@@ -63,6 +64,7 @@ def firstbot(msg):
                 # buy under 1000
                 order = {"type": "add", "order_id": orderID, "symbol": "BOND", "dir": "SELL", "price": buyPrice, "size": buySize}
                 orderID += 1
+        print(order)
         return order
 # ~~~~~============== MAIN LOOP ==============~~~~~
 
@@ -76,7 +78,8 @@ def main():
     # exponential explosion in pending messages. Please, don't do that!
     while True:
         order = firstbot(read_from_exchange(exchange))
-        write_to_exchange(exchange, order)
+        if order:
+            write_to_exchange(exchange, order)
     print("The exchange replied:", hello_from_exchange, file=sys.stderr)
 
 if __name__ == "__main__":
