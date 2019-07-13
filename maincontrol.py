@@ -41,6 +41,25 @@ def write_to_exchange(exchange, obj):
 def read_from_exchange(exchange):
     return json.loads(exchange.readline())
 
+orderID = 1
+
+def firstbot(msg):
+    # selling bonds first
+    if msg["type"] == "BOOK" and msg["symbol"] == "BOND":
+        sellList = msg["sell"]
+        buyList = msg["buy"]
+        for sellPrice, sellSize in sellList:
+            if sellPrice < 1000:
+                # buy under 1000
+                order = {"type": "add", "order_id": orderID, "symbol": "BOND", "dir": "BUY", "price": sellPrice, "size": sellSize}
+                orderID += 1
+                write_to_exchange(exchange, order)
+        for buyPrice, buySize in buyList:
+            if buyPrice > 1000:
+                # buy under 1000
+                order = {"type": "add", "order_id": orderID, "symbol": "BOND", "dir": "SELL", "price": buyPrice, "size": buySize}
+                orderID += 1
+                write_to_exchange(exchange, order)
 
 # ~~~~~============== MAIN LOOP ==============~~~~~
 
@@ -53,7 +72,8 @@ def main():
     # Since many write messages generate marketdata, this will cause an
     # exponential explosion in pending messages. Please, don't do that!
     while True:
-        print(read_from_exchange(exchange))
+        msg = read_from_exchange(exchange)
+        firstbot(msg)
     print("The exchange replied:", hello_from_exchange, file=sys.stderr)
 
 if __name__ == "__main__":
