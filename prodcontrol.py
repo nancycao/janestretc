@@ -11,6 +11,7 @@ import sys
 import socket
 import json
 import firstbot
+import secondbot
 import argparse
 
 # ~~~~~============== CONFIGURATION  ==============~~~~~
@@ -55,7 +56,7 @@ def main():
     # Since many write messages generate marketdata, this will cause an
     # exponential explosion in pending messages. Please, don't do that!
     while True:
-        orderList = firstbot.firstbotmain(read_from_exchange(exchange))
+        orderList = secondbot.secondbotmain(read_from_exchange(exchange))
         if orderList:
             for order in orderList:
                 write_to_exchange(exchange, order)
