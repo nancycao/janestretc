@@ -57,8 +57,9 @@ def main():
     # exponential explosion in pending messages. Please, don't do that!
     while True:
         orderList = firstbot.firstbotmain(read_from_exchange(exchange))
-        for order in orderList:
-            write_to_exchange(exchange, order)
+        if orderList:
+            for order in orderList:
+                write_to_exchange(exchange, order)
     print("The exchange replied:", hello_from_exchange, file=sys.stderr)
 
 if __name__ == "__main__":
